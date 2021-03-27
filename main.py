@@ -66,9 +66,9 @@ def main():
 # de destino e o Custo por KM. E imprime a Distância e o custo
 def consultar_trecho(cidade_origem, cidade_destino, custo_por_km):
     try:
-        km = dados.loc[cidade_origem,cidade_destino]
-        print("Distancia entre",cidade_origem,"e", cidade_destino, "e de", km, "km")
-        print("Custo de R$", km * custo_por_km,"\n")
+        km = dados.loc[cidade_origem, cidade_destino]
+        print("Distancia entre", cidade_origem, "e", cidade_destino, "e de", km, "km")
+        print("Custo de R$", km * custo_por_km, "\n")
     except:
         print("Alguma cidade digitada esta incorreta ou não temos em nossos dados!")
 
@@ -83,9 +83,9 @@ def consultar_rota(lista_cidades, custo_por_km):
             print(lista_cidades[cont], "->", lista_cidades[cont+1], "(", km, "KM )")
             cont = cont + 1
         print("\nDistância total: ", total_km, "km")
-        print("Custo total: R$ %.2f" %(total_km*custo_por_km))
-        print("O total de litros gastos foi de: %.3f" %(total_km*2.57))
-        print("A viagem durou %d dias.\n" %(total_km/283))
+        print("Custo total: R$ %.2f" % (total_km*custo_por_km))
+        print("O total de litros gastos foi de: %.3f" % (total_km*2.57))
+        print("A viagem durou %d dias.\n" % (total_km/283))
     except:
         print("Alguma cidade digitada esta incorreta ou não temos em nossos dados!")
 
