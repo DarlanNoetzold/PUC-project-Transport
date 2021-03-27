@@ -1,13 +1,14 @@
 import pandas as pd
 
-#Leitura dos dados
+# Leitura dos dados
 dados = pd.read_csv("DNIT-Distancias.csv", sep=";")
 
-#Formatação das Colunas
+# Formatação das Colunas
 columns = dados.columns.to_series()
 dados.set_index(columns, inplace=True)
 
-#Inicializa o Menu do Programa e chama as funções de cada opção
+
+# Inicializa o Menu do Programa e chama as funções de cada opção
 def main():
     load_program = True
     custo_por_km = 0
@@ -20,7 +21,7 @@ def main():
         print("\nEscolha uma das opcoes: ")
         op = input()
 
-        #Opção de Configurar custo por KM
+        # Opção de Configurar custo por KM
         if op == "1":
             invalid_op = True
             while invalid_op:
@@ -31,7 +32,7 @@ def main():
                 else:
                     invalid_op = False
 
-        #Opção de Consultar Trecho
+        # Opção de Consultar Trecho
         elif op == "2":
             if custo_por_km > 0:
                 print("\nDigite a cidade de origem: ")
@@ -44,7 +45,7 @@ def main():
             else:
                 print("Voce deve informar o custo por KM antes de definir um trecho!")
 
-        #Opção de Consultar Rota
+        # Opção de Consultar Rota
         elif op == "3":
             if custo_por_km > 0:
                 print("\nDigite o nome de duas ou mais cidades separadas por virgula:")
@@ -55,14 +56,15 @@ def main():
             else:
                 print("Voce deve informar o custo por KM antes de definir uma rota!")
 
-        #Opção de Término do Programa
+        # Opção de Término do Programa
         elif op == "4":
             print("\nFim do programa!")
             load_program = False
         else:
             print("\nOpcao Invalida!")
 
-#Função que Consulta o Trecho que recebe a cidade de origem e
+
+# Função que Consulta o Trecho que recebe a cidade de origem e
 # de destino e o Custo por KM. E imprime a Distância e o custo
 def consultar_trecho(cidade_origem, cidade_destino, custo_por_km):
     try:
@@ -72,7 +74,8 @@ def consultar_trecho(cidade_origem, cidade_destino, custo_por_km):
     except:
         print("Alguma cidade digitada esta incorreta ou não temos em nossos dados!")
 
-#Função que Consulta uma rota que recebe uma lista das cidades e o custo por KM.
+
+# Função que Consulta uma rota que recebe uma lista das cidades e o custo por KM.
 def consultar_rota(lista_cidades, custo_por_km):
     try:
         cont = 0
@@ -89,5 +92,7 @@ def consultar_rota(lista_cidades, custo_por_km):
     except:
         print("Alguma cidade digitada esta incorreta ou não temos em nossos dados!")
 
-#Chama a função main
+# Chama a função main
+
+
 main()
