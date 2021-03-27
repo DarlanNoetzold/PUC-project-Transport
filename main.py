@@ -1,8 +1,4 @@
 import pandas as pd
-import time
-
-#Inicializando variavel global
-custo_por_km = 0
 
 #Leitura dos dados
 dados = pd.read_csv("DNIT-Distancias.csv", sep=";")
@@ -14,6 +10,7 @@ dados.set_index(columns, inplace=True)
 #Inicializa o Menu do Programa e chama as funções de cada opção
 def main():
     load_program = True
+    custo_por_km = 0
     while load_program:
         print("=== MENU ===")
         print("1. Configurar custo por KM")
@@ -49,11 +46,14 @@ def main():
 
         #Opção de Consultar Rota
         elif op == "3":
-            print("\nDigite o nome de duas ou mais cidades separadas por virgula:")
-            string_cidades = input()
-            string_cidades = string_cidades.upper()
-            lista_cidades = string_cidades.split(", ")
-            consultar_rota(lista_cidades, custo_por_km)
+            if custo_por_km > 0:
+                print("\nDigite o nome de duas ou mais cidades separadas por virgula:")
+                string_cidades = input()
+                string_cidades = string_cidades.upper()
+                lista_cidades = string_cidades.split(", ")
+                consultar_rota(lista_cidades, custo_por_km)
+            else:
+                print("Voce deve informar o custo por KM antes de definir uma rota!")
 
         #Opção de Término do Programa
         elif op == "4":
@@ -62,7 +62,8 @@ def main():
         else:
             print("\nOpcao Invalida!")
 
-#Função que Consulta o Trecho que recebe a cidade de origem e de destino e o Custo por KM. E imprime a Distância e o custo
+#Função que Consulta o Trecho que recebe a cidade de origem e
+# de destino e o Custo por KM. E imprime a Distância e o custo
 def consultar_trecho(cidade_origem, cidade_destino, custo_por_km):
     try:
         km = dados.loc[cidade_origem,cidade_destino]
